@@ -176,7 +176,7 @@ class Button():
         #print(GPIO.input(button.pin)) # debug
         #print(button.pressed_value) # debug
         
-        return (GPIO.input(button.pin) == button.pressed_value)
+        return (GPIO.input(self.pin) == button.pressed_value)
 
     # End def
 
@@ -204,7 +204,7 @@ class Button():
         #   of the class (i.e. we are executing the while loop while the 
         #   button is not being pressed)
         #
-        while(GPIO.input(button.pin) == button.unpressed_value):
+        while(GPIO.input(self.pin) == self.unpressed_value):
         
             if self.unpressed_callback is not None:
                 self.unpressed_callback_value = self.unpressed_callback()
@@ -227,7 +227,7 @@ class Button():
         #   of the class (i.e. we are executing the while loop while the 
         #   button is being pressed)
         
-        while(GPIO.input(button.pin) == button.pressed_value):
+        while(GPIO.input(self.pin) == self.pressed_value):
         
             if self.pressed_callback is not None:
                 self.pressed_callback_value = self.pressed_callback()
